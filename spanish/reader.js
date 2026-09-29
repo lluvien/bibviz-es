@@ -19,7 +19,9 @@
    if(!cache.has(book.code)){const response=await fetch('data/bible/'+book.code+'.json');if(!response.ok)throw Error('No se pudo cargar el libro.');cache.set(book.code,await response.json());}
    if(request!==token)return;
    const verses=cache.get(book.code).chapters[match[2]], first=+match[3], last=match[4]?Object.keys(verses).length:+(match[5]||match[3]);
-   content.innerHTML='<h2>'+esc(book.label)+' '+match[2]+'</h2>'+Object.entries(verses).map(([n,text])=>'<p id="v'+n+'" class="verse'+(n>=first&&n<=last?' highlight':'')+'"><sup>'+n+'</sup>'+esc(text)+'</p>').join('');
+   const empty=Object.entries(verses).filter(([,text])=>!text.trim()).map(([n])=>n);
+   const note=empty.length?'<p class="notice">La fuente RV1909 no incluye texto bajo los números '+empty.join(', ')+'. Se conserva su numeración sin añadir versículos.</p>':'';
+   content.innerHTML='<h2>'+esc(book.label)+' '+match[2]+'</h2>'+note+Object.entries(verses).filter(([,text])=>text.trim()).map(([n,text])=>'<p id="v'+n+'" class="verse'+(n>=first&&n<=last?' highlight':'')+'"><sup>'+n+'</sup>'+esc(text)+'</p>').join('');
    if(update)history.pushState(null,'','?ref='+encodeURIComponent(ref));
    document.title=book.label+' '+match[2]+' · Reina-Valera 1909';
    if(first&&verses[first])document.getElementById('v'+first).scrollIntoView({block:'center'});

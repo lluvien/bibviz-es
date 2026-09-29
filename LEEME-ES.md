@@ -16,7 +16,9 @@ Abrir http://127.0.0.1:8088/. No abrir los HTML con `file://`, porque los gráfi
 lector cargan JSON mediante HTTP.
 
 Incluye 671 entradas de tres fuentes, los gráficos originales, búsqueda en español,
-66 libros y 31.102 versículos de la Reina-Valera 1909. Los títulos están traducidos;
+66 libros de la Reina-Valera 1909. La fuente tiene 31.102 posiciones numeradas,
+18 de ellas sin texto por diferencias de numeración; el lector las señala sin
+añadir contenido. Los títulos están traducidos;
 los enlaces al análisis de las fuentes llevan a sitios externos en inglés.
 Las páginas agrupan las citas según el original, pero no traducen las etiquetas
 interpretativas de esos grupos. Se muestran como «Grupo 1», «Grupo 2», etc.
