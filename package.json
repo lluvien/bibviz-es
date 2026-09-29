@@ -1,0 +1,11 @@
+{
+  "name": "bibviz-es",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Adaptación independiente de BibViz al castellano con Reina-Valera 1909",
+  "scripts": {
+    "build": "node build-es.cjs",
+    "test": "node verify-es.cjs"
+  },
+  "engines": { "node": ">=20" }
+}
